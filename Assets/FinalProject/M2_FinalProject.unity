@@ -122,6 +122,100 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &2336260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2336262}
+  - component: {fileID: 2336261}
+  m_Layer: 0
+  m_Name: M1projectTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2336261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5758fc4639a964f952341c7fdaa6bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  a:
+    name: 
+    hp: 0
+    baseStats:
+      atk: 0
+      def: 0
+      res: 0
+      spd: 0
+      crt: 0
+      aim: 0
+      eva: 0
+    resistance: 0
+    weakness: 0
+    weapon:
+      name: 
+      dmgType: 0
+      elem: 0
+      bonusStats:
+        atk: 0
+        def: 0
+        res: 0
+        spd: 0
+        crt: 0
+        aim: 0
+        eva: 0
+  b:
+    name: 
+    hp: 0
+    baseStats:
+      atk: 0
+      def: 0
+      res: 0
+      spd: 0
+      crt: 0
+      aim: 0
+      eva: 0
+    resistance: 0
+    weakness: 0
+    weapon:
+      name: 
+      dmgType: 0
+      elem: 0
+      bonusStats:
+        atk: 0
+        def: 0
+        res: 0
+        spd: 0
+        crt: 0
+        aim: 0
+        eva: 0
+--- !u!4 &2336262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336260}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &229646051
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 664683323}
   - component: {fileID: 664683322}
+  - component: {fileID: 664683324}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -308,9 +403,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &664683324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664683321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 229646054}
   - {fileID: 664683323}
+  - {fileID: 2336262}
