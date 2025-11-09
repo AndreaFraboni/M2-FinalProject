@@ -152,55 +152,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a:
-    name: 
-    hp: 0
+    name: Gandalf
+    hp: 100
     baseStats:
-      atk: 0
-      def: 0
-      res: 0
-      spd: 0
-      crt: 0
-      aim: 0
-      eva: 0
-    resistance: 0
-    weakness: 0
+      atk: 10
+      def: 20
+      res: 20
+      spd: 20
+      crt: 20
+      aim: 20
+      eva: 20
+    resistance: 1
+    weakness: 2
     weapon:
-      name: 
-      dmgType: 0
-      elem: 0
+      name: bastone Magico
+      dmgType: 1
+      elem: 1
       bonusStats:
-        atk: 0
-        def: 0
-        res: 0
-        spd: 0
-        crt: 0
-        aim: 0
-        eva: 0
+        atk: 50
+        def: 10
+        res: 20
+        spd: 50
+        crt: 20
+        aim: 50
+        eva: 50
   b:
-    name: 
-    hp: 0
+    name: Orco
+    hp: 100
     baseStats:
-      atk: 0
-      def: 0
-      res: 0
-      spd: 0
-      crt: 0
-      aim: 0
-      eva: 0
-    resistance: 0
-    weakness: 0
+      atk: 50
+      def: 30
+      res: 30
+      spd: 10
+      crt: 20
+      aim: 20
+      eva: 20
+    resistance: 3
+    weakness: 1
     weapon:
-      name: 
+      name: Spada
       dmgType: 0
-      elem: 0
+      elem: 2
       bonusStats:
-        atk: 0
-        def: 0
-        res: 0
-        spd: 0
-        crt: 0
-        aim: 0
-        eva: 0
+        atk: 20
+        def: 20
+        res: 20
+        spd: 20
+        crt: 10
+        aim: 20
+        eva: 20
 --- !u!4 &2336262
 Transform:
   m_ObjectHideFlags: 0

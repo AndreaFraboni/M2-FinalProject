@@ -1,7 +1,6 @@
 using System.Globalization;
 using UnityEngine;
 
-
 [System.Serializable]
 public class Weapon
 {
@@ -68,8 +67,5 @@ public class Weapon
     {
         this.bonusStats = bonusStats;
     }
-
-
-
 
 }

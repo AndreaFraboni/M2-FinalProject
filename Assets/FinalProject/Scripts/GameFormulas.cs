@@ -75,8 +75,8 @@ public static class GameFormulas
         defenderStatsSum = Stats.Sum(defender.GetBaseStats(), defender.GetWeapon().GetBonusStats());
 
         int baseDamage;
-        float damageMul;
-        float damage = 1.0f;
+        float damageMul;      
+        float damage = 1.0f; // conterrà il valore del danno da restituire
 
         if (attacker.GetWeapon().GetDamageType() == Weapon.DAMAGE_TYPE.PHYSICAL)
         { // def    

@@ -5,7 +5,7 @@ public class Hero
 {
     // Variabili private
     [SerializeField] private string name;
-    [SerializeField] private float hp;
+    [SerializeField] private float hp;      // l'uso di un int è in contrasto con il calcolo del Danno che lavora con EvaluateElementalModifier che restituisce un float 
     [SerializeField] private Stats baseStats;
     [SerializeField] private ELEMENT resistance;
     [SerializeField] private ELEMENT weakness;
@@ -64,7 +64,7 @@ public class Hero
             Debug.LogWarning("Stai cercando di assegnare un nome non valido. Non puoi non assegnare il nome dall'HEO!);");
     }
 
-    public void SetHp(float hpvalue)
+    public void SetHp(float hpvalue) // settaggio dell'hp lavorando con float
     {
         if (hpvalue > 0)
         {
@@ -74,10 +74,9 @@ public class Hero
         {
             this.hp = 0;
         }
-
     }
 
-    public void SetSats(Stats baseStats)
+    public void SetStats(Stats baseStats)
     {
         this.baseStats = baseStats;
     }
@@ -100,12 +99,12 @@ public class Hero
             Debug.LogWarning("Weapon is NULL !!!!!");
     }
 
-    public void AddHp(float amount)
+    public void AddHp(float amount) // avendo scelto hp in float lavoriamo con float
     {
         SetHp(hp + amount);
     }
 
-    public void TakeDamage (float damage)
+    public void TakeDamage (float damage) // lavorando con hp in float anche il danno sarà in float
     {
         AddHp(-damage);
     }
@@ -117,6 +116,4 @@ public class Hero
         else
             return false;
     }
-
-
 }
