@@ -5,11 +5,17 @@ using UnityEngine;
 [System.Serializable] 
 public static class GameFormulas
 {
+    public static bool elementalWeaknessHitted = false;
+    public static bool elementalResistnaceHitted = false;
+
     // l'eore che attacca ha un vantaggio rispetto all'eroe che si difende ??
     public static bool HasElementAdvantage(ELEMENT attackElement, Hero defender)
     {
         if (attackElement == defender.GetWeakness())
+        {
+            elementalWeaknessHitted = true;
             return true;
+        }
         else
             return false;
     }
@@ -18,7 +24,10 @@ public static class GameFormulas
     public static bool HasElementDisadvantage(ELEMENT attackElement, Hero defender)
     {
         if (attackElement == defender.GetResistance())
+        {
+            elementalResistnaceHitted = true;
             return true;
+        }
         else
             return false;
     }
@@ -82,15 +91,22 @@ public static class GameFormulas
         { // def    
             baseDamage = attackerStatsSum.atk - defenderStatsSum.def;
             damageMul = EvaluateElementalModifier(attacker.GetWeapon().GetElement(), defender);
+            if (elementalWeaknessHitted) Debug.Log("WEAKNESS");
+            if (elementalResistnaceHitted) Debug.Log("RESIST");
             damage = baseDamage * damageMul;
         }
         else if (attacker.GetWeapon().GetDamageType() == Weapon.DAMAGE_TYPE.MAGICAL)
         { // res 
             baseDamage = attackerStatsSum.atk - defenderStatsSum.res;
             damageMul = EvaluateElementalModifier(attacker.GetWeapon().GetElement(), defender);
+            if (elementalWeaknessHitted) Debug.Log("WEAKNESS");
+            if (elementalResistnaceHitted) Debug.Log("RESIST");
             damage = baseDamage * damageMul;
         }
 
+        elementalWeaknessHitted = false;
+        elementalResistnaceHitted = false;
+ 
         if (IsCrit(damage))
         {
             damage = damage * 2;

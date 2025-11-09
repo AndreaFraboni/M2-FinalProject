@@ -61,7 +61,7 @@ public class Hero
             this.name = name;
         }
         else
-            Debug.LogWarning("Stai cercando di assegnare un nome non valido. Non puoi non assegnare il nome dall'HEO!);");
+            Debug.LogWarning("Stai cercando di assegnare un nome non valido. Non puoi non assegnare il nome dall'HERO!);");
     }
 
     public void SetHp(float hpvalue) // settaggio dell'hp lavorando con float
