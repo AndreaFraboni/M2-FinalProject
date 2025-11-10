@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a:
-    name: Gandalf
-    hp: 100
+    name: Mago
+    hp: 5000
     baseStats:
       atk: 10
       def: 20
@@ -178,7 +178,7 @@ MonoBehaviour:
         eva: 50
   b:
     name: Orco
-    hp: 100
+    hp: 5000
     baseStats:
       atk: 50
       def: 30

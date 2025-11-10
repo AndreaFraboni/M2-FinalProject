@@ -10,16 +10,16 @@ public class Hero
     [SerializeField] private ELEMENT resistance;
     [SerializeField] private ELEMENT weakness;
     [SerializeField] private Weapon weapon;
-    
+
     // Costruttore
     public Hero(string name_Hero, float hp_Hero, Stats baseStats_Hero, ELEMENT resistance_Hero, ELEMENT weakness_Hero, Weapon weapon_Hero)
     {
-        name        = name_Hero;
-        hp          = hp_Hero;
-        baseStats   = baseStats_Hero;
-        resistance  = resistance_Hero;
-        weakness    = weakness_Hero;
-        weapon      = weapon_Hero;
+        name = name_Hero;
+        hp = hp_Hero;
+        baseStats = baseStats_Hero;
+        resistance = resistance_Hero;
+        weakness = weakness_Hero;
+        weapon = weapon_Hero;
     }
 
     // Getter
@@ -72,7 +72,7 @@ public class Hero
         }
         else if (hpvalue <= 0)
         {
-            this.hp = 0;
+            hp = 0;
         }
     }
 
@@ -81,21 +81,21 @@ public class Hero
         this.baseStats = baseStats;
     }
 
-    public void SetResistance (ELEMENT resistance)
+    public void SetResistance(ELEMENT resistance)
     {
         this.resistance = resistance;
     }
 
-    public void SetWeakness (ELEMENT weakness)
+    public void SetWeakness(ELEMENT weakness)
     {
         this.weakness = weakness;
     }
 
     public void SetWeapon(Weapon weapon)
     {
-        if (weapon != null) 
+        if (weapon != null)
             this.weapon = weapon;
-        else 
+        else
             Debug.LogWarning("Weapon is NULL !!!!!");
     }
 
@@ -104,7 +104,7 @@ public class Hero
         SetHp(hp + amount);
     }
 
-    public void TakeDamage (float damage) // lavorando con hp in float anche il danno sarà in float
+    public void TakeDamage(float damage) // lavorando con hp in float anche il danno sarà in float
     {
         AddHp(-damage);
     }

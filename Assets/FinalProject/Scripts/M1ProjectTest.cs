@@ -17,17 +17,15 @@ public class M1ProjectTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         // Le stats e i parametri delle armi weapon e degli Hero si possono comunque impostare e modificare da INSPECTOR !!!!
         //                          (atk, def, res, spd, crt, aim, eva)
         Stats SpadaStats = new Stats(10, 20, 10, 10, 20, 20, 20);
         Weapon Spada = new Weapon("Spada", Weapon.DAMAGE_TYPE.PHYSICAL, ELEMENT.ICE, SpadaStats);
-
         Stats BastoneMagicoStats = new Stats(50, 20, 10, 50, 50, 50, 20);
         Weapon Bastonemagico = new Weapon("Bastonemagico", Weapon.DAMAGE_TYPE.MAGICAL, ELEMENT.FIRE, BastoneMagicoStats);
 
-        a.SetName("Gandalf");
-        a.SetHp(100.0f);
+        a.SetName("Mago");
+        a.SetHp(5000.0f);
         Stats astats = new Stats(20, 20, 20, 20, 20, 20, 10);
         a.SetStats(astats);
         a.SetResistance(ELEMENT.FIRE);
@@ -35,7 +33,7 @@ public class M1ProjectTest : MonoBehaviour
         a.SetWeapon(Bastonemagico);
 
         b.SetName("Orco");
-        b.SetHp(100.0f);
+        b.SetHp(5000.0f);
         Stats bstats = new Stats(20, 20, 20, 20, 20, 20, 10);
         b.SetStats(bstats);
         b.SetResistance(ELEMENT.ICE);
@@ -57,6 +55,7 @@ public class M1ProjectTest : MonoBehaviour
                 Debug.Log($"L'eroe che ATTACCA si chiama : {a.GetName()}");
                 Debug.Log($"L'eroe che DIFENDE si chiama : {b.GetName()}");
                 damage = GameFormulas.CalculateDamage(a, b);
+                Debug.Log($"Il valore del danno calcolato provocato da Hero a verso Hero b è : {damage}");
                 b.TakeDamage(damage);
 
                 if (!b.IsAlive())
@@ -70,6 +69,7 @@ public class M1ProjectTest : MonoBehaviour
                     Debug.Log($"L'eroe che ATTACCA si chiama : {b.GetName()}");
                     Debug.Log($"L'eroe che DIFENDE si chiama : {a.GetName()}");
                     damage = GameFormulas.CalculateDamage(b, a);
+                    Debug.Log($"Il valore del danno calcolato provocato da Hero b verso Hero a è : {damage}");
                     a.TakeDamage(damage);
                     if (!a.IsAlive())
                     {   // è morto a !!!!
