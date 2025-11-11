@@ -23,35 +23,12 @@ public class Hero
     }
 
     // Getter
-    public string GetName()
-    {
-        return name;
-    }
-
-    public float GetHp()
-    {
-        return hp;
-    }
-
-    public Stats GetBaseStats()
-    {
-        return baseStats;
-    }
-
-    public ELEMENT GetResistance()
-    {
-        return resistance;
-    }
-
-    public ELEMENT GetWeakness()
-    {
-        return weakness;
-    }
-
-    public Weapon GetWeapon()
-    {
-        return weapon;
-    }
+    public string GetName() => name;
+    public float GetHp() => hp;
+    public Stats GetBaseStats() => baseStats;
+    public ELEMENT GetResistance() => resistance;
+    public ELEMENT GetWeakness() => weakness;
+    public Weapon GetWeapon() => weapon;
 
     // Setter
     public void SetName(string name)
@@ -99,12 +76,13 @@ public class Hero
             Debug.LogWarning("Weapon is NULL !!!!!");
     }
 
-    public void AddHp(float amount) // avendo scelto hp in float lavoriamo con float
+    // Functions
+    public void AddHp(float amount) 
     {
         SetHp(hp + amount);
     }
 
-    public void TakeDamage(float damage) // lavorando con hp in float anche il danno sarà in float
+    public void TakeDamage(float damage) 
     {
         AddHp(-damage);
     }

@@ -27,25 +27,10 @@ public class Weapon
     }
 
     //getter
-    public string GetName()
-    {
-        return name;
-    }
-
-    public DAMAGE_TYPE GetDamageType()
-    {
-        return dmgType;
-    }
-
-    public ELEMENT GetElement()
-    {
-        return elem;
-    }
-
-    public Stats GetBonusStats()
-    {
-        return bonusStats;
-    }
+    public string GetName() => name;
+    public DAMAGE_TYPE GetDamageType() => dmgType;
+    public ELEMENT GetElement() => elem;
+    public Stats GetBonusStats() => bonusStats;
 
     //setter
     public void SetName(string name)

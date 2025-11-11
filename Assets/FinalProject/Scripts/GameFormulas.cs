@@ -6,7 +6,7 @@ using UnityEngine;
 public static class GameFormulas
 {
     public static bool elementalWeaknessHitted = false;
-    public static bool elementalResistnaceHitted = false;
+    public static bool elementalResistanceHitted = false;
 
     // l'eore che attacca ha un vantaggio rispetto all'eroe che si difende ??
     public static bool HasElementAdvantage(ELEMENT attackElement, Hero defender)
@@ -25,13 +25,14 @@ public static class GameFormulas
     {
         if (attackElement == defender.GetResistance())
         {
-            elementalResistnaceHitted = true;
+            elementalResistanceHitted = true;
             return true;
         }
         else
             return false;
     }
 
+    // Valuta vantaggi e svantaggi dell'attacco in corso
     public static float EvaluateElementalModifier(ELEMENT attackElement, Hero defender)
     {
         if (HasElementAdvantage(attackElement, defender)) return 1.5f;
@@ -47,7 +48,7 @@ public static class GameFormulas
         hitChance = (attacker.aim - defender.eva);
 
         int randomNumber;
-        randomNumber = Random.Range(0, 99);
+        randomNumber = Random.Range(0, 100);
 
         if (randomNumber > hitChance)
         {
@@ -60,10 +61,11 @@ public static class GameFormulas
         }
     }
 
+    // Attacco Critico ???
     public static bool IsCrit(float critValue)
     {
         int randomNumber;
-        randomNumber = Random.Range(0, 99);
+        randomNumber = Random.Range(0, 100);
 
         Debug.Log("CRIT");
 
@@ -84,15 +86,15 @@ public static class GameFormulas
         defenderStatsSum = Stats.Sum(defender.GetBaseStats(), defender.GetWeapon().GetBonusStats());
 
         int baseDamage;
-        float damageMul;      
-        float damage = 1.0f; // conterrà il valore del danno da restituire
+        float damageMul;
+        float damage = 0.0f;
 
         if (attacker.GetWeapon().GetDamageType() == Weapon.DAMAGE_TYPE.PHYSICAL)
         { // def    
             baseDamage = attackerStatsSum.atk - defenderStatsSum.def;
             damageMul = EvaluateElementalModifier(attacker.GetWeapon().GetElement(), defender);
             if (elementalWeaknessHitted) Debug.Log("WEAKNESS");
-            if (elementalResistnaceHitted) Debug.Log("RESIST");
+            if (elementalResistanceHitted) Debug.Log("RESIST");
             damage = baseDamage * damageMul;
         }
         else if (attacker.GetWeapon().GetDamageType() == Weapon.DAMAGE_TYPE.MAGICAL)
@@ -100,16 +102,16 @@ public static class GameFormulas
             baseDamage = attackerStatsSum.atk - defenderStatsSum.res;
             damageMul = EvaluateElementalModifier(attacker.GetWeapon().GetElement(), defender);
             if (elementalWeaknessHitted) Debug.Log("WEAKNESS");
-            if (elementalResistnaceHitted) Debug.Log("RESIST");
+            if (elementalResistanceHitted) Debug.Log("RESIST");
             damage = baseDamage * damageMul;
         }
 
         elementalWeaknessHitted = false;
-        elementalResistnaceHitted = false;
+        elementalResistanceHitted = false;
  
         if (IsCrit(damage))
         {
-            damage = damage * 2;
+            damage = damage * 2; // raddoppia danno se attacco critico
         }
 
         if (damage < 0)

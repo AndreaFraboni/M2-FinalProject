@@ -11,7 +11,6 @@ public struct Stats
     public int aim;
     public int eva;
 
-
     // Costruttore
     public Stats(int atkval, int defval, int resval, int spdval, int crtval, int aimval, int evaval)
     {
@@ -37,6 +36,5 @@ public struct Stats
         StatsSum.eva = statA.eva + statB.eva;
         return StatsSum;
     }
-
 }
 

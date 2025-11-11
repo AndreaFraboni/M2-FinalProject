@@ -10,98 +10,103 @@ public class M1ProjectTest : MonoBehaviour
     [SerializeField] Hero a;
     [SerializeField] Hero b;
 
-    float damage;
-    int firstAttacker = 1; // 1 partirà l'hero a mentre con 2 partirà ad attaccare b - per iniziare impostato a 1.
-
+    float damage;   
+    int firstAttacker = 1; // con 1 partirà l'hero A mentre con 2 partirà ad attaccare B - per iniziare lo inizializzo a 1.
 
     // Start is called before the first frame update
     void Start()
     {
-        // Le stats e i parametri delle armi weapon e degli Hero si possono comunque impostare e modificare da INSPECTOR !!!!
-        //                          (atk, def, res, spd, crt, aim, eva)
-        Stats SpadaStats = new Stats(10, 20, 10, 10, 20, 20, 20);
-        Weapon Spada = new Weapon("Spada", Weapon.DAMAGE_TYPE.PHYSICAL, ELEMENT.ICE, SpadaStats);
-        Stats BastoneMagicoStats = new Stats(50, 20, 10, 50, 50, 50, 20);
-        Weapon Bastonemagico = new Weapon("Bastonemagico", Weapon.DAMAGE_TYPE.MAGICAL, ELEMENT.FIRE, BastoneMagicoStats);
-
-        a.SetName("Mago");
-        a.SetHp(5000.0f);
-        Stats astats = new Stats(20, 20, 20, 20, 20, 20, 10);
-        a.SetStats(astats);
-        a.SetResistance(ELEMENT.FIRE);
-        a.SetWeakness(ELEMENT.ICE);
-        a.SetWeapon(Bastonemagico);
-
-        b.SetName("Orco");
-        b.SetHp(5000.0f);
-        Stats bstats = new Stats(20, 20, 20, 20, 20, 20, 10);
-        b.SetStats(bstats);
-        b.SetResistance(ELEMENT.ICE);
-        b.SetWeakness(ELEMENT.FIRE);
-        b.SetWeapon(Spada);
-
+        //-----------------------------------------------------------------------------------------------------------------
+        //                         SETTAGGIO MANUALE ma non necessario si può dall'INSPECTOR
+        //-----------------------------------------------------------------------------------------------------------------
+        //Stats SpadaStats = new Stats(20, 20, 20, 20, 10, 20, 20);
+        //Weapon Spada = new Weapon("Spada", Weapon.DAMAGE_TYPE.PHYSICAL, ELEMENT.ICE, SpadaStats);
+        //Stats BastoneMagicoStats = new Stats(100, 10, 20, 50, 20, 50, 50);
+        //Weapon Bastonemagico = new Weapon("Bastonemagico", Weapon.DAMAGE_TYPE.MAGICAL, ELEMENT.FIRE, BastoneMagicoStats);
+        //a.SetName("Mago");
+        //a.SetHp(500.0f);
+        //Stats astats = new Stats(10, 20, 20, 20, 20, 20, 20);
+        //a.SetStats(astats);
+        //a.SetResistance(ELEMENT.FIRE);
+        //a.SetWeakness(ELEMENT.ICE);
+        //a.SetWeapon(Bastonemagico);
+        //b.SetName("Orco");
+        //b.SetHp(1000.0f);
+        //Stats bstats = new Stats(20, 20, 20, 20, 10, 20, 20);
+        //b.SetStats(bstats);
+        //b.SetResistance(ELEMENT.LIGHTNING);
+        //b.SetWeakness(ELEMENT.FIRE);
+        //b.SetWeapon(Spada);
+        //-----------------------------------------------------------------------------------------------------------------
     }
 
     // Update is called once per frame
     void Update()
     {
         // ogni frame ......
-        if (a.IsAlive() && b.IsAlive()) // se i due eroi sono vivi esegui la battaglia !!!!
+        if (a.IsAlive() && b.IsAlive()) // se i due eroi sono entrambi vivi possiamo procedere con la battaglia !!
         {
-            firstAttacker = CalculateFirstAttacker(a, b);
+            firstAttacker = CalculateFirstAttacker(a, b); // Determino chi deve partire con il primo attacco se ottengo 1 attaccherà per primo a altrimenti attaccherà per primo b
 
-            if (firstAttacker == 1) // parte ad attaccare a ....
+            if (firstAttacker == 1) // a attaccherà per primo ....
             {
                 Debug.Log($"L'eroe che ATTACCA si chiama : {a.GetName()}");
                 Debug.Log($"L'eroe che DIFENDE si chiama : {b.GetName()}");
                 damage = GameFormulas.CalculateDamage(a, b);
-                Debug.Log($"Il valore del danno calcolato provocato da Hero a verso Hero b è : {damage}");
-                b.TakeDamage(damage);
-
+                Debug.Log($"Il valore del danno calcolato provocato da {a.GetName()} verso {b.GetName()} è : {damage}");
+                b.TakeDamage(damage); // applica danno a hero b
                 if (!b.IsAlive())
-                {       // b è morto !!!!
-                    Debug.Log($"L'eroe a di nome {a.GetName()} è il VINCIRTORE !!");
-                    Debug.Log($"L'eroe b di nome {b.GetName()} è morto !!");
+                {      
+                    // b è morto !!!! Ha vinto a !
+                    Debug.Log($"L'eroe di nome {b.GetName()} è morto !!");
+                    Debug.Log($"L'eroe di nome {a.GetName()} è il VINCITORE !!");
                     return;
                 }
                 else
-                {       // adesso se b è vivo attacca lui .....
-                    Debug.Log($"L'eroe che ATTACCA si chiama : {b.GetName()}");
-                    Debug.Log($"L'eroe che DIFENDE si chiama : {a.GetName()}");
+                {   
+                    // adesso b è ancora vivo e attacca lui .....
+                    Debug.Log($"l'eroe che attacca si chiama : {b.GetName()}");
+                    Debug.Log($"l'eroe che DIFENDE si chiama : {a.GetName()}");
                     damage = GameFormulas.CalculateDamage(b, a);
-                    Debug.Log($"Il valore del danno calcolato provocato da Hero b verso Hero a è : {damage}");
-                    a.TakeDamage(damage);
+                    Debug.Log($"Il valore del danno calcolato provocato da {b.GetName()} verso {a.GetName()} è : {damage}");
+                    a.TakeDamage(damage); // applica danno a hero a
                     if (!a.IsAlive())
-                    {   // è morto a !!!!
-                        Debug.Log($"L'eroe a di nome {b.GetName()} è il VINCIRTORE !!");
-                        Debug.Log($"L'eroe b di nome {a.GetName()} è morto !!");
+                    {
+                        // è morto a !!!! Ha vinto b
+                        Debug.Log($"L'eroe di nome {a.GetName()} è morto !!");
+                        Debug.Log($"L'eroe di nome {b.GetName()} è il VINCITORE !!");
                         return;
                     }
                 }
             }
             else
-            { // parte ad attaccare b
+            {
+                // attacca per primo b
                 Debug.Log($"L'eroe che ATTACCA si chiama : {b.GetName()}");
                 Debug.Log($"L'eroe che DIFENDE si chiama : {a.GetName()}");
                 damage = GameFormulas.CalculateDamage(b, a);
-                a.TakeDamage(damage);
-
+                Debug.Log($"Il valore del danno calcolato provocato da {b.GetName()} verso {a.GetName()} è : {damage}");
+                a.TakeDamage(damage); // applica danno a hero a
                 if (!a.IsAlive())
-                {    // a è morto !!!!
-                    Debug.Log($"L'eroe a di nome {b.GetName()} è il VINCIRTORE !!");
-                    Debug.Log($"L'eroe b di nome {a.GetName()} è morto !!");
+                {    
+                    // a è morto !!!!
+                    Debug.Log($"L'eroe di nome {a.GetName()} è morto !!");
+                    Debug.Log($"L'eroe di nome {b.GetName()} è il VINCITORE !!");
                     return;
                 }
                 else
-                {     // se a è vivo ora attacca lui .......
+                {    
+                    // a è ancora vivo e attacca lui .......
                     Debug.Log($"L'eroe che ATTACCA si chiama : {a.GetName()}");
                     Debug.Log($"L'eroe che DIFENDE si chiama : {b.GetName()}");
                     damage = GameFormulas.CalculateDamage(a, b);
-                    b.TakeDamage(damage);
+                    Debug.Log($"Il valore del danno calcolato provocato da {a.GetName()} verso {b.GetName()} è : {damage}");
+                    b.TakeDamage(damage); // applica danno a hero b
                     if (!b.IsAlive())
-                    {   // b è morto !!!!
-                        Debug.Log($"L'eroe a di nome {a.GetName()} è il VINCIRTORE !!");
-                        Debug.Log($"L'eroe b di nome {b.GetName()} è morto !!");
+                    {
+                        // b è morto !!!!
+                        Debug.Log($"L'eroe di nome {b.GetName()} è morto !!");
+                        Debug.Log($"L'eroe di nome {a.GetName()} è il VINCIRTORE !!");
                         return;
                     }
                 }
@@ -114,6 +119,7 @@ public class M1ProjectTest : MonoBehaviour
         }
     }
 
+    // Determino quale dei due eroi parte per primo ad attaccare
     public int CalculateFirstAttacker(Hero a, Hero b)
     {
         Stats aStatsSum;
@@ -136,7 +142,7 @@ public class M1ProjectTest : MonoBehaviour
         {
             // tiriamo a sorte ...........
             int randomNumber;
-            randomNumber = Random.Range(0, 99);
+            randomNumber = Random.Range(0, 100);
             if (randomNumber <= 50)
             {
                 heroSelected = 1;
