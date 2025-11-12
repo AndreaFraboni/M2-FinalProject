@@ -48,7 +48,7 @@ public static class GameFormulas
         hitChance = (attacker.aim - defender.eva);
 
         int randomNumber;
-        randomNumber = Random.Range(0, 100);
+        randomNumber = Random.Range(0, 100); // avevo messo 0,99 non avevo capito che era inclusivo poi a correzione il dubbio di raffaele mi ha fatto cambiare
 
         if (randomNumber > hitChance)
         {
@@ -65,7 +65,7 @@ public static class GameFormulas
     public static bool IsCrit(float critValue)
     {
         int randomNumber;
-        randomNumber = Random.Range(0, 100);
+        randomNumber = Random.Range(0, 100); // avevo messo 0,99 non avevo capito che era inclusivo poi a correzione il dubbio di raffaele mi ha fatto cambiare
 
         Debug.Log("CRIT");
 

@@ -142,7 +142,7 @@ public class M1ProjectTest : MonoBehaviour
         {
             // tiriamo a sorte ...........
             int randomNumber;
-            randomNumber = Random.Range(0, 100);
+            randomNumber = Random.Range(0, 100); // metto da 0 a 100 anche qua !
             if (randomNumber <= 50)
             {
                 heroSelected = 1;
