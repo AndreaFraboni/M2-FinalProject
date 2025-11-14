@@ -50,11 +50,7 @@ public class M1ProjectTest : MonoBehaviour
 
             if (firstAttacker == 1) // a attaccherà per primo ....
             {
-                Debug.Log($"L'eroe che ATTACCA si chiama : {a.GetName()}");
-                Debug.Log($"L'eroe che DIFENDE si chiama : {b.GetName()}");
-                damage = GameFormulas.CalculateDamage(a, b);
-                Debug.Log($"Il valore del danno calcolato provocato da {a.GetName()} verso {b.GetName()} è : {damage}");
-                b.TakeDamage(damage); // applica danno a hero b
+                SimulateFight(a, b);
                 if (!b.IsAlive())
                 {      
                     // b è morto !!!! Ha vinto a !
@@ -63,13 +59,9 @@ public class M1ProjectTest : MonoBehaviour
                     return;
                 }
                 else
-                {   
+                {
                     // adesso b è ancora vivo e attacca lui .....
-                    Debug.Log($"l'eroe che attacca si chiama : {b.GetName()}");
-                    Debug.Log($"l'eroe che DIFENDE si chiama : {a.GetName()}");
-                    damage = GameFormulas.CalculateDamage(b, a);
-                    Debug.Log($"Il valore del danno calcolato provocato da {b.GetName()} verso {a.GetName()} è : {damage}");
-                    a.TakeDamage(damage); // applica danno a hero a
+                    SimulateFight(b, a);
                     if (!a.IsAlive())
                     {
                         // è morto a !!!! Ha vinto b
@@ -82,11 +74,7 @@ public class M1ProjectTest : MonoBehaviour
             else
             {
                 // attacca per primo b
-                Debug.Log($"L'eroe che ATTACCA si chiama : {b.GetName()}");
-                Debug.Log($"L'eroe che DIFENDE si chiama : {a.GetName()}");
-                damage = GameFormulas.CalculateDamage(b, a);
-                Debug.Log($"Il valore del danno calcolato provocato da {b.GetName()} verso {a.GetName()} è : {damage}");
-                a.TakeDamage(damage); // applica danno a hero a
+                SimulateFight(b, a);
                 if (!a.IsAlive())
                 {    
                     // a è morto !!!!
@@ -95,13 +83,9 @@ public class M1ProjectTest : MonoBehaviour
                     return;
                 }
                 else
-                {    
+                {
                     // a è ancora vivo e attacca lui .......
-                    Debug.Log($"L'eroe che ATTACCA si chiama : {a.GetName()}");
-                    Debug.Log($"L'eroe che DIFENDE si chiama : {b.GetName()}");
-                    damage = GameFormulas.CalculateDamage(a, b);
-                    Debug.Log($"Il valore del danno calcolato provocato da {a.GetName()} verso {b.GetName()} è : {damage}");
-                    b.TakeDamage(damage); // applica danno a hero b
+                    SimulateFight(a, b);
                     if (!b.IsAlive())
                     {
                         // b è morto !!!!
@@ -153,6 +137,16 @@ public class M1ProjectTest : MonoBehaviour
             }
         }
         return heroSelected;
+    }
+
+    // Simula calcolando la battaglia tra due Hero
+    void SimulateFight(Hero Attacker, Hero Defender)
+    {
+        Debug.Log($"L'eroe che ATTACCA si chiama : {Attacker.GetName()}");
+        Debug.Log($"L'eroe che DIFENDE si chiama : {Defender.GetName()}");
+        damage = GameFormulas.CalculateDamage(Attacker, Defender);
+        Debug.Log($"Il valore del danno calcolato provocato da {Attacker.GetName()} verso {Defender.GetName()} è : {damage}");
+        Defender.TakeDamage(damage);
     }
 
 
