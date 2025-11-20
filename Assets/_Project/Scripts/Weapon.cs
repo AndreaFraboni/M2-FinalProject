@@ -1,4 +1,4 @@
-using System.Globalization;
+//using System.Globalization;
 using UnityEngine;
 
 [System.Serializable]
@@ -20,10 +20,10 @@ public class Weapon
     // Costruttore Weapon
     public Weapon(string nameWeapon, DAMAGE_TYPE damageType, ELEMENT enumElement, Stats bonusStatistics)
     {
-        name        = nameWeapon;
-        dmgType     = damageType;
-        elem        = enumElement;
-        bonusStats  = bonusStatistics;
+        name = nameWeapon;
+        dmgType = damageType;
+        elem = enumElement;
+        bonusStats = bonusStatistics;
     }
 
     //getter
@@ -33,24 +33,8 @@ public class Weapon
     public Stats GetBonusStats() => bonusStats;
 
     //setter
-    public void SetName(string name)
-    {
-        this.name = name;
-    }
-
-    public void SetDamageType(DAMAGE_TYPE dmgType)
-    {
-        this.dmgType = dmgType;
-    }
-
-    public void SetElement(ELEMENT elem)
-    {
-        this.elem = elem;
-    }
-
-    public void SetStats(Stats bonusStats)
-    {
-        this.bonusStats = bonusStats;
-    }
-
+    public void SetName(string name) => this.name = name;
+    public void SetDamageType(DAMAGE_TYPE dmgType) => this.dmgType = dmgType;
+    public void SetElement(ELEMENT elem) => this.elem = elem;
+    public void SetStats(Stats bonusStats) => this.bonusStats = bonusStats;
 }

@@ -1,44 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using Unity.Burst.Intrinsics;
-using UnityEditor.Experimental.GraphView;
+//using System.Collections;
+//using System.Collections.Generic;
+//using System.Security.Cryptography;
+//using Unity.Burst.Intrinsics;
+//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class M1ProjectTest : MonoBehaviour
 {
-    [SerializeField] Hero a;
-    [SerializeField] Hero b;
+    [SerializeField] private Hero a;
+    [SerializeField] private Hero b;
 
-    float damage;   
-    int firstAttacker = 1; // con 1 partirà l'hero A mentre con 2 partirà ad attaccare B - per iniziare lo inizializzo a 1.
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //-----------------------------------------------------------------------------------------------------------------
-        //                         SETTAGGIO MANUALE ma non necessario si può dall'INSPECTOR
-        //-----------------------------------------------------------------------------------------------------------------
-        //Stats SpadaStats = new Stats(20, 20, 20, 20, 10, 20, 20);
-        //Weapon Spada = new Weapon("Spada", Weapon.DAMAGE_TYPE.PHYSICAL, ELEMENT.ICE, SpadaStats);
-        //Stats BastoneMagicoStats = new Stats(100, 10, 20, 50, 20, 50, 50);
-        //Weapon Bastonemagico = new Weapon("Bastonemagico", Weapon.DAMAGE_TYPE.MAGICAL, ELEMENT.FIRE, BastoneMagicoStats);
-        //a.SetName("Mago");
-        //a.SetHp(500.0f);
-        //Stats astats = new Stats(10, 20, 20, 20, 20, 20, 20);
-        //a.SetStats(astats);
-        //a.SetResistance(ELEMENT.FIRE);
-        //a.SetWeakness(ELEMENT.ICE);
-        //a.SetWeapon(Bastonemagico);
-        //b.SetName("Orco");
-        //b.SetHp(1000.0f);
-        //Stats bstats = new Stats(20, 20, 20, 20, 10, 20, 20);
-        //b.SetStats(bstats);
-        //b.SetResistance(ELEMENT.LIGHTNING);
-        //b.SetWeakness(ELEMENT.FIRE);
-        //b.SetWeapon(Spada);
-        //-----------------------------------------------------------------------------------------------------------------
-    }
+    private float damage;
+    private int firstAttacker = 1; // con 1 partirà l'hero A mentre con 2 partirà ad attaccare B - per iniziare lo inizializzo a 1.
 
     // Update is called once per frame
     void Update()
@@ -52,7 +25,7 @@ public class M1ProjectTest : MonoBehaviour
             {
                 SimulateFight(a, b);
                 if (!b.IsAlive())
-                {      
+                {
                     // b è morto !!!! Ha vinto a !
                     Debug.Log($"L'eroe di nome {b.GetName()} è morto !!");
                     Debug.Log($"L'eroe di nome {a.GetName()} è il VINCITORE !!");
@@ -76,7 +49,7 @@ public class M1ProjectTest : MonoBehaviour
                 // attacca per primo b
                 SimulateFight(b, a);
                 if (!a.IsAlive())
-                {    
+                {
                     // a è morto !!!!
                     Debug.Log($"L'eroe di nome {a.GetName()} è morto !!");
                     Debug.Log($"L'eroe di nome {b.GetName()} è il VINCITORE !!");
@@ -148,6 +121,4 @@ public class M1ProjectTest : MonoBehaviour
         Debug.Log($"Il valore del danno calcolato provocato da {Attacker.GetName()} verso {Defender.GetName()} è : {damage}");
         Defender.TakeDamage(damage);
     }
-
-
 }

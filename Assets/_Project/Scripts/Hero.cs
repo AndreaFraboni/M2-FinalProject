@@ -31,6 +31,10 @@ public class Hero
     public Weapon GetWeapon() => weapon;
 
     // Setter
+    public void SetStats(Stats baseStats) => this.baseStats = baseStats;
+    public void SetResistance(ELEMENT resistance) => this.resistance = resistance;
+    public void SetWeakness(ELEMENT weakness) => this.weakness = weakness;
+
     public void SetName(string name)
     {
         if (!string.IsNullOrEmpty(name))
@@ -56,21 +60,6 @@ public class Hero
         }
     }
 
-    public void SetStats(Stats baseStats)
-    {
-        this.baseStats = baseStats;
-    }
-
-    public void SetResistance(ELEMENT resistance)
-    {
-        this.resistance = resistance;
-    }
-
-    public void SetWeakness(ELEMENT weakness)
-    {
-        this.weakness = weakness;
-    }
-
     public void SetWeapon(Weapon weapon)
     {
         if (weapon != null)
@@ -80,16 +69,8 @@ public class Hero
     }
 
     // Functions
-    public void AddHp(float amount) 
-    {
-        SetHp(hp + amount);
-    }
-
-    public void TakeDamage(float damage) 
-    {
-        AddHp(-damage);
-    }
-
+    public void AddHp(float amount) => this.SetHp(hp + amount);
+    public void TakeDamage(float damage) => this.AddHp(-damage);
     public bool IsAlive()
     {
         if (hp > 0)

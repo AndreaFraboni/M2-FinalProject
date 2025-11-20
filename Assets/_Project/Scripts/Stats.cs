@@ -1,7 +1,7 @@
-using UnityEngine;
+//using UnityEngine;
 
 [System.Serializable]
-public struct Stats 
+public struct Stats
 {
     public int atk;
     public int def;

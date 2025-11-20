@@ -1,8 +1,8 @@
-using System.Runtime.InteropServices.WindowsRuntime;
-using UnityEditor;
+//using System.Runtime.InteropServices.WindowsRuntime;
+//using UnityEditor;
 using UnityEngine;
 
-[System.Serializable] 
+[System.Serializable]
 public static class GameFormulas
 {
     public static bool elementalWeaknessHitted = false;
@@ -108,7 +108,7 @@ public static class GameFormulas
 
         elementalWeaknessHitted = false;
         elementalResistanceHitted = false;
- 
+
         if (IsCrit(damage))
         {
             damage = damage * 2; // raddoppia danno se attacco critico
